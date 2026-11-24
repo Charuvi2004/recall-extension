@@ -1,0 +1,14 @@
+body { width: 340px; padding: 14px 16px 16px; background: var(--surface); }
+header { margin-bottom: 12px; }
+header h1 { font-size: 17px; color: var(--accent); }
+.review-box h2 { font-size: 16px; }
+.review-box button.primary { width: 100%; margin-top: 10px; padding: 10px; }
+.course { display: block; padding: 10px 0; border-top: 1px solid var(--line); color: var(--ink); }
+.course:hover { text-decoration: none; }
+.course:hover .course-title { color: var(--accent); }
+.course-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.course .bar { margin: 6px 0 4px; }
+.section-title { font-size: 12px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.4px; }
+.toggle { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+footer { display: flex; gap: 14px; margin-top: 12px; }

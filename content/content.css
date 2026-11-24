@@ -1,0 +1,66 @@
+/* ---------- Recall UI on YouTube (works on light and dark YouTube themes) ---------- */
+#recall-bar, #recall-flag, #recall-toast {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #f0efec;
+  background: #1f1f1e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  z-index: 2147483000;
+}
+
+#recall-bar {
+  position: fixed; left: 16px; bottom: 16px; max-width: min(640px, calc(100vw - 240px));
+  display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; border-radius: 12px;
+}
+#recall-bar .recall-title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 240px; }
+.recall-brand { font-weight: 700; color: #6da7ec; letter-spacing: 0.2px; }
+.recall-muted { color: #c3c2b7; white-space: nowrap; }
+.recall-progress { display: inline-block; width: 80px; height: 6px; background: #383835; border-radius: 3px; overflow: hidden; flex: none; }
+.recall-progress > span { display: block; height: 100%; background: #3987e5; border-radius: 3px; }
+
+.recall-btn, .recall-x, #recall-flag { cursor: pointer; font: inherit; }
+.recall-btn {
+  color: #f0efec; background: transparent; border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px; padding: 6px 10px; white-space: nowrap;
+}
+.recall-btn:hover { background: rgba(255, 255, 255, 0.08); }
+.recall-btn.recall-primary { background: #2a78d6; border-color: #2a78d6; color: #fff; font-weight: 600; }
+.recall-btn.recall-primary:hover { background: #256abf; }
+.recall-x { background: none; border: none; color: #c3c2b7; font-size: 18px; line-height: 1; padding: 4px 6px; border-radius: 6px; }
+.recall-x:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+#recall-flag {
+  position: fixed; right: 16px; bottom: 16px; padding: 10px 14px; border-radius: 999px; font-weight: 600;
+}
+#recall-flag:hover { background: #2a2a29; }
+#recall-flag .recall-flag-icon { color: #6da7ec; }
+#recall-flag .recall-muted { font-weight: 400; }
+#recall-flag[hidden] { display: none; }
+
+#recall-toast {
+  position: fixed; left: 50%; bottom: 72px; transform: translate(-50%, 12px);
+  display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 14px; border-radius: 12px;
+  max-width: min(640px, calc(100vw - 32px)); opacity: 0; pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+#recall-toast.recall-show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+#recall-toast input {
+  font: inherit; color: #f0efec; background: #2c2c2a; border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px; padding: 6px 10px; width: 300px; max-width: 50vw;
+}
+#recall-toast input:focus { outline: 2px solid #3987e5; outline-offset: 1px; }
+
+/* ---------- Focus mode: hide recommendations, Shorts, comments and the home feed ---------- */
+html.recall-focus #related,
+html.recall-focus ytd-watch-next-secondary-results-renderer,
+html.recall-focus ytd-comments#comments,
+html.recall-focus ytd-reel-shelf-renderer,
+html.recall-focus ytd-rich-shelf-renderer[is-shorts],
+html.recall-focus ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
+html.recall-focus ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.recall-focus ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html.recall-focus .ytp-endscreen-content,
+html.recall-focus .ytp-ce-element {
+  display: none !important;
+}

@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DSA Full Course (Placement Series) - YouTube</title>
+<style>body{font-family:Roboto,Arial,sans-serif;background:#0f0f0f;color:#f1f1f1;margin:0}
+header{height:56px;display:flex;align-items:center;padding:0 24px;border-bottom:1px solid #272727;font-weight:700}
+header span{color:#ff0033;margin-right:6px}.wrap{display:flex;gap:24px;padding:24px}
+.hero{width:340px;height:420px;border-radius:16px;background:linear-gradient(#3a2f6b,#1b1730);padding:20px;box-sizing:border-box}
+.hero h1{font-size:26px;margin:200px 0 8px}.list{flex:1}
+ytd-playlist-video-renderer{display:flex;gap:12px;align-items:center;padding:8px;border-radius:12px}
+.th{width:160px;height:90px;border-radius:8px;background:#333;position:relative;display:block}
+.th span{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.8);font-size:12px;padding:1px 4px;border-radius:4px;color:#fff}
+#video-title{color:#f1f1f1;text-decoration:none;font-size:16px}</style></head>
+<body><header><span>▶</span>YouTube (mock page for testing)</header>
+<div class="wrap"><div class="hero"><h1>DSA Full Course (Placement Series)</h1><div>Mock Creator · 5 videos</div></div>
+<div class="list" id="list"></div></div>
+<script>
+const items=[["vid1","Lecture 1: Arrays and Two Pointers","0:14"],["vid2","Lecture 2: Sliding Window","48:10"],["vid3","Lecture 3: Binary Search","1:02:33"],["vid4","Lecture 4: Recursion","55:00"],["vid5","Lecture 5: Linked Lists","41:20"]];
+function add(i){const [v,t,d]=items[i];const r=document.createElement('ytd-playlist-video-renderer');
+r.innerHTML=`<a class="th" href="/watch?v=${v}&list=PLTEST&index=${i+1}"><span>${d}</span></a><a id="video-title" href="/watch?v=${v}&list=PLTEST&index=${i+1}" title="${t}">${t}</a>`;
+document.getElementById('list').append(r)}
+for(let i=0;i<3;i++)add(i);
+setTimeout(()=>{add(3);add(4)},4000); // lazy-load like YouTube
+</script></body></html>
